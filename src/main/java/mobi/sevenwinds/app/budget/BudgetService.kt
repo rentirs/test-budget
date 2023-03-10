@@ -17,7 +17,7 @@ object BudgetService {
                 this.month = body.month
                 this.amount = body.amount
                 this.type = body.type
-                this.authorid = EntityID(body.authorid, AuthorTable).takeIf { entityID -> entityID._value != null }
+                this.authorid = EntityID(body.authorId, AuthorTable).takeIf { entityID -> entityID._value != null }
             }
 
             return@transaction entity.toResponse()
@@ -36,7 +36,7 @@ object BudgetService {
                 .limit(param.limit, param.offset)
 
             val total = query.count()
-            var data = BudgetEntity.wrapRows(query).map { it.toResponse() }
+            val data = BudgetEntity.wrapRows(query).map { it.toResponse() }
 
             val sumByType = data.groupBy { it.type.name }.mapValues { it.value.sumOf { v -> v.amount } }
 

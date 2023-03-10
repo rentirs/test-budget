@@ -10,9 +10,6 @@ import com.papsign.ktor.openapigen.route.path.normal.get
 import com.papsign.ktor.openapigen.route.path.normal.post
 import com.papsign.ktor.openapigen.route.response.respond
 import com.papsign.ktor.openapigen.route.route
-import org.jetbrains.annotations.Nullable
-import org.joda.time.DateTime
-import java.util.Date
 
 fun NormalOpenAPIRoute.budget() {
     route("/budget") {
@@ -33,7 +30,7 @@ data class BudgetRecord(
     @Min(1) @Max(12) val month: Int,
     @Min(1) val amount: Int,
     val type: BudgetType,
-    val authorid: Int?,
+    val authorId: Int?,
     val name: String?,
     val date: String?
 )

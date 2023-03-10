@@ -20,7 +20,7 @@ object DatabaseFactory {
 
         Database.connect(hikari())
 
-        Flyway.configure().cleanDisabled(false);
+        Flyway.configure().cleanDisabled(false)
 
         val flyway = Flyway.configure().dataSource(dbUrl, dbUser, dbPassword)
             .locations("classpath:db/migration")

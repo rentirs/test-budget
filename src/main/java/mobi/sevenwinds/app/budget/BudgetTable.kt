@@ -22,10 +22,10 @@ class BudgetEntity(id: EntityID<Int>) : IntEntity(id) {
     var month by BudgetTable.month
     var amount by BudgetTable.amount
     var type by BudgetTable.type
-    var authorid by BudgetTable?.authorId
-    var author by AuthorEntity.optionalReferencedOn(BudgetTable.authorId)
+    var authorid by BudgetTable.authorId
+    private var author by AuthorEntity.optionalReferencedOn(BudgetTable.authorId)
 
     fun toResponse(): BudgetRecord {
-        return BudgetRecord(year, month, amount, type, authorid?.value, author?.name, author?.date?.toString())
+            return BudgetRecord(year, month, amount, type, authorid?.value, author?.name, author?.date?.toString())
     }
 }
