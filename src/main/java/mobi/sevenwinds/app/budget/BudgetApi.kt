@@ -33,7 +33,10 @@ data class BudgetRecord(
     val authorId: Int?,
     val name: String?,
     val date: String?
-)
+) {
+    constructor(year: Int, month: Int, amount: Int, type: BudgetType)
+            : this(year, month, amount, type, null, null, null)
+}
 
 data class BudgetYearParam(
     @PathParam("Год") val year: Int,
